@@ -9,15 +9,25 @@ import { menu } from "../utils/Constants";
 
 const SearchResultHeader = () => {
   const [selectedMenu, setSelectedMenu] = useState("All"); //state to set active for the selected menu
+  const { setImageSearch } = useContext(Context);
+
+  useEffect(() => {
+    return () => setImageSearch(false); //set search image result type to false on reload
+  }, []);
   // function to update the selected menu
   const clickHandler = (menuItem) => {
+    let isTypeImage = (menuItem.name = "Images");
     setSelectedMenu(menuItem.name);
+    setImageSearch(isTypeImage ? true : false); //if the type is image set it to image result type
   };
   return (
     <div className="p-[15px] pb-0 md:pr-5 md:pl-20 md:pt-7 border-b border-[#ebebeb] flex md:block flex-col items-center sticky top-0 bg-white">
       <div className="flex items-center justify-between w-full ">
         <div className="flex items-center grow ">
-          <img src={Logo} className="hidden md:block w-[92px] mr-10" />
+          <Link to="/">
+            <img src={Logo} className="hidden md:block w-[92px] mr-10" />
+          </Link>
+
           <SearchInput from="searchResult" />
         </div>
         <div className="hidden md:block">

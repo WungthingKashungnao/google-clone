@@ -7,7 +7,16 @@ import MicIcon from "../assets/mic.svg";
 import ImageIcon from "../assets/image.svg";
 
 const SearchInput = () => {
-  const [searchQuery, setSearchQuery] = useState(""); //state for search query
+  const { query, startIndex } = useParams(); //extracting queries from url
+  const [searchQuery, setSearchQuery] = useState(query || ""); //state for search query also if query is empty it means we are in home page
+  const navigate = useNavigate();
+
+  // function to searchQuery when enter is pressed
+  const searchQueryHandler = (event) => {
+    if (event.key === "Enter" && searchQuery.length > 0) {
+      navigate(`/${searchQuery}/${1}`);
+    }
+  };
   return (
     <div
       id="searchBox"
@@ -18,7 +27,7 @@ const SearchInput = () => {
       <input
         type="text"
         onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyUp={(e) => console.log(e.target.value)}
+        onKeyUp={searchQueryHandler}
         value={searchQuery}
         autoFocus
         className="grow outline-none text-black/[0.87]"

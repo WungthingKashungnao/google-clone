@@ -16,9 +16,9 @@ const SearchResultHeader = () => {
   }, []);
   // function to update the selected menu
   const clickHandler = (menuItem) => {
-    let isTypeImage = (menuItem.name = "Images");
-    setSelectedMenu(menuItem.name);
+    let isTypeImage = menuItem.name === "Images"; //this will set isTypeImage to either true or false
     setImageSearch(isTypeImage ? true : false); //if the type is image set it to image result type
+    setSelectedMenu(menuItem.name);
   };
   return (
     <div className="p-[15px] pb-0 md:pr-5 md:pl-20 md:pt-7 border-b border-[#ebebeb] flex md:block flex-col items-center sticky top-0 bg-white">
@@ -34,6 +34,7 @@ const SearchResultHeader = () => {
           <ProfileIcon />
         </div>
       </div>
+      {/* different categories of search start */}
       <div className="flex ml-[-12px] mt-3">
         {menu.map((menu, index) => (
           <span
@@ -51,6 +52,7 @@ const SearchResultHeader = () => {
           </span>
         ))}
       </div>
+      {/* different categories of search end*/}
     </div>
   );
 };

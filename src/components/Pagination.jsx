@@ -25,8 +25,8 @@ const Pagination = ({ queries }) => {
         {queries.previousPage && (
           <div
             className="absolute left-[-30px] md:left-[-40px] top-[10px]"
-            onClick={() =>
-              paginationClickHandler(queries.previousPage[0].startIndex)
+            onClick={
+              () => paginationClickHandler(queries.previousPage[0].startIndex) //here previousPage is from the api and in the first index of the array is where the  starterIndex is stored
             }
           >
             <FiChevronLeft size={20} className="cursor-pointer" />
@@ -39,8 +39,8 @@ const Pagination = ({ queries }) => {
         {queries.nextPage && (
           <div
             className="absolute right-[-30px] md:right-[-40px] top-[10px]"
-            onClick={() =>
-              paginationClickHandler(queries.nextPage[0].startIndex)
+            onClick={
+              () => paginationClickHandler(queries.nextPage[0].startIndex) //here nextPage is from the api and in the first index of the array is where the  starterIndex is stored
             }
           >
             <FiChevronRight size={20} className="cursor-pointer" />

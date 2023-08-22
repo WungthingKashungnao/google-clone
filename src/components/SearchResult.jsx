@@ -59,9 +59,9 @@ const SearchResult = () => {
             </div>
           </>
         )}
-        <Pagination />
+        <Pagination queries={queries} />
       </main>
-      <Footer queries={queries} />
+      <Footer />
     </div>
   );
 };

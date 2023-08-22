@@ -23,7 +23,12 @@ const SearchInput = () => {
       className="h-[46px] w-full md:w-[584px] flex items-center gap-3 px-4 border border-[#dfe1e5] rounded-3xl hover:bg-white hover:shadow-c hover:border-0
     focus-within:shadow-c focus-within:border-0"
     >
-      <AiOutlineSearch size={18} color="#9aa0a6" />
+      <AiOutlineSearch
+        size={18}
+        color="#9aa0a6"
+        className="cursor-pointer"
+        onClick={() => navigate(`/${searchQuery}/${1}`)}
+      />
       <input
         type="text"
         onChange={(e) => setSearchQuery(e.target.value)}
